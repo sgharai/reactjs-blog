@@ -10,11 +10,12 @@ import './style.css';
 const Navbar = (props) => {
 
     const [search, setSearch] = useState(false);
+    // saves search variable in state with default value of false
 
 
     const submitSearch = (e) => {
         e.preventDefault();
-        alert('Searhed');
+        alert('Searched');
 
     }
 
@@ -22,9 +23,11 @@ const Navbar = (props) => {
     const openSearch = () => {
         setSearch(true);
     }
+    //sets the state to true when icon is clicked so that searchClass returns true and changes the styling
 
 
     const searchClass = search ? 'searchInput active' : 'searchInput';
+    // sets class when icon is clicked so that style makes the search bar expand
 
   return(
     <div className="navbar">

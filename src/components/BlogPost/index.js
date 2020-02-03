@@ -11,6 +11,7 @@ import blogPost from '../../data/blog.json';
 const BlogPost = (props) => {
 
     const [post, setPost] = useState({
+        // have to initialize because first useEffect hasn't rendered
         id: "" ,
         blogCategory: "" ,
         blogTitle : "" ,
@@ -20,14 +21,16 @@ const BlogPost = (props) => {
         blogText: ""
     });
     const [slug, setSlug] = useState('');
+    //makes identifying part of URL different from id for data storage purposes
     
-    
+    //useEffect called after every render
     useEffect(() => {
         const slug = props.match.params.slug;
         const post = blogPost.data.find(post => post.slug == slug);
         setPost(post);
         setSlug(slug)
     }, [post, props.match.params.slug]);
+    //React will compare the array of values defined in the second parameter of the effect with the array defined in the same effect from the previous render. React will only call the effect when any value of the array has changed since the previous render. 
 
     if(post.blogImage == "") return null;
 
